@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a5c">
+  <meta name="description" content="Workit: ontdek en vergelijk vakmensen voor je volgende klus. Interactieve conceptmockup met fictieve gegevens.">
+  <title>Workit | Vind de juiste vakman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="demo-bar"><span class="demo-dot"></span> Interactieve conceptmockup <span class="demo-separator">·</span> Alle vakmensen, prijzen en reviews zijn fictief</div>
+  <header class="site-header">
+    <div class="shell nav-bar">
+      <a class="brand" href="#" aria-label="Workit startpagina">work<span>it</span><i>.</i></a>
+      <nav class="desktop-nav" aria-label="Hoofdnavigatie">
+        <a href="#ontdek" class="nav-active">Vind een vakman</a>
+        <a href="#hoe-werkt-het">Hoe werkt het?</a>
+        <a href="#voor-vakmensen">Voor vakmensen</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="language-btn" aria-label="Taal: Nederlands">NL <span>⌄</span></button>
+        <button type="button" id="savedButton" class="saved-btn" aria-label="Bekijk bewaarde vakmensen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0l-1 1-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span id="savedCount">0</span></button>
+        <a class="header-cta" href="#voor-vakmensen">Ben jij vakman? <span>↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-spark">✳</span> GOED WERK BEGINT HIER</div>
+          <h1>De juiste vakman.<br><em>Zo gevonden.</em></h1>
+          <p>Van een lekkende kraan tot een complete verbouwing. Ontdek vakmensen in je buurt, vergelijk en kies met vertrouwen.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-grid"></div>
+          <div class="art-circle art-circle-one"></div>
+          <div class="art-circle art-circle-two"></div>
+          <div class="art-ring"></div>
+          <div class="art-sticker sticker-one"><span>✦</span> Geklaard!</div>
+          <div class="art-sticker sticker-two">✓ 4,9 <small>tevreden klanten</small></div>
+          <div class="art-tool">✳</div>
+        </div>
+        <form id="searchForm" class="search-panel" aria-label="Zoek een vakman">
+          <div class="search-field search-service">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.7 6.3 3 3M4 20l4.5-1 11-11a2.1 2.1 0 0 0-3-3l-11 11L4 20Z"/></svg></span>
+            <label for="serviceSelect">Welke vakman?</label>
+            <select id="serviceSelect" name="service">
+              <option value="all">Alle vakmensen</option>
+              <option value="Loodgieter">Loodgieter</option>
+              <option value="Klusjesman">Klusjesman</option>
+              <option value="Aannemer">Aannemer</option>
+              <option value="Elektricien">Elektricien</option>
+              <option value="Schilder">Schilder</option>
+            </select>
+          </div>
+          <div class="search-field search-location">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5.5-8 11-8 11S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <label for="locationInput">Waar heb je hulp nodig?</label>
+            <input id="locationInput" name="location" type="text" value="Leuven" placeholder="Stad of postcode" autocomplete="address-level2">
+          </div>
+          <div class="search-field search-when">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg></span>
+            <label for="whenSelect">Wanneer?</label>
+            <select id="whenSelect" name="when">
+              <option value="all">Maakt niet uit</option>
+              <option value="soon">Zo snel mogelijk</option>
+              <option value="week">Deze week</option>
+            </select>
+          </div>
+          <button class="search-submit" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 5 5"/></svg><span>Zoeken</span></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="categories shell" aria-labelledby="categoryHeading">
+      <div class="section-heading">
+        <div><p class="kicker">WAT MOET ER GEBEUREN?</p><h2 id="categoryHeading">Elke klus, de juiste expert.</h2></div>
+        <span class="section-caption">Kies je categorie om te starten <span>↘</span></span>
+      </div>
+      <div class="category-list" id="categoryList">
+        <button class="category-tile active" data-category="all" type="button"><span class="category-symbol symbol-all">✳</span><span>Alle vakmensen</span><span class="category-arrow">↗</span></button>
+        <button class="category-tile" data-category="Loodgieter" type="button"><span class="category-symbol symbol-water">◉</span><span>Loodgieters</span><span class="category-arrow">↗</span></button>
+        <button class="category-tile" data-category="Klusjesman" type="button"><span class="category-symbol symbol-hammer">⚒</span><span>Klusjesmannen</span><span class="category-arrow">↗</span></button>
+        <button class="category-tile" data-category="Aannemer" type="button"><span class="category-symbol symbol-home">⌂</span><span>Aannemers</span><span class="category-arrow">↗</span></button>
+        <button class="category-tile" data-category="Elektricien" type="button"><span class="category-symbol symbol-electric">ϟ</span><span>Elektriciens</span><span class="category-arrow">↗</span></button>
+        <button class="category-tile" data-category="Schilder" type="button"><span class="category-symbol symbol-paint">◐</span><span>Schilders</span><span class="category-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section id="ontdek" class="results-section">
+      <div class="shell">
+        <div class="results-heading">
+          <div>
+            <p class="kicker">ONTDEK VAKMENSEN IN JOUW BUURT</p>
+            <h2><span id="resultsCount">6</span> vakmensen <span class="muted">rond <span id="resultsPlace">Leuven</span></span></h2>
+            <p class="results-subtitle">Vergelijk specialisaties, ervaringen en richtprijzen in één overzicht.</p>
+          </div>
+          <button type="button" class="map-toggle" id="mapToggle"><svg viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15"/></svg> Kaart bekijken</button>
+        </div>
+
+        <div class="results-layout">
+          <aside class="filters" aria-label="Zoekfilters">
+            <div class="filters-head"><h3>Filters</h3><button type="button" id="clearFilters">Wis alles</button></div>
+            <div class="filter-group"><h4>Type vakman</h4>
+              <label class="checkline"><input type="radio" name="filterCategory" value="all" checked> <span>Alle categorieën</span></label>
+              <label class="checkline"><input type="radio" name="filterCategory" value="Loodgieter"> <span>Loodgieters</span></label>
+              <label class="checkline"><input type="radio" name="filterCategory" value="Klusjesman"> <span>Klusjesmannen</span></label>
+              <label class="checkline"><input type="radio" name="filterCategory" value="Aannemer"> <span>Aannemers</span></label>
+              <label class="checkline"><input type="radio" name="filterCategory" value="Elektricien"> <span>Elektriciens</span></label>
+              <label class="checkline"><input type="radio" name="filterCategory" value="Schilder"> <span>Schilders</span></label>
+            </div>
+            <div class="filter-group"><h4>Vertrouwen</h4>
+              <label class="checkline"><input type="checkbox" id="verifiedFilter"> <span>Geverifieerd profiel</span></label>
+              <label class="checkline"><input type="checkbox" id="ratingFilter"> <span>Score van 4,8 of hoger</span></label>
+            </div>
+            <div class="filter-group"><h4>Richtprijs per uur</h4>
+              <div class="price-values"><strong>Tot € <span id="priceValue">90</span></strong><span>€ 90+</span></div>
+              <input id="priceFilter" class="price-slider" aria-label="Maximale richtprijs per uur" type="range" min="35" max="90" value="90" step="5">
+              <p class="filter-footnote">Indicatieve tarieven. De definitieve prijs hangt af van je project.</p>
+            </div>
+            <div class="filter-note"><span>✦</span><div><strong>Een goeie match is goud waard.</strong><p>Vergelijk profielen en stel de vragen die voor jouw project belangrijk zijn.</p></div></div>
+          </aside>
+
+          <div class="list-column">
+            <div class="listing-topbar">
+              <div class="listing-count"><span class="green-pulse"></span> <strong id="countSummary">6 profielen</strong> om te ontdekken</div>
+              <label class="sort-label" for="sortSelect">Sorteer op
+                <select id="sortSelect"><option value="match">Beste match</option><option value="rating">Hoogste beoordeling</option><option value="price">Laagste richtprijs</option><option value="jobs">Meeste opdrachten</option></select>
+              </label>
+            </div>
+            <div id="resultsList" class="results-list" aria-live="polite"></div>
+            <div id="emptyState" class="empty-state" hidden><div class="empty-icon">⌕</div><h3>Geen match gevonden</h3><p>Probeer een andere categorie, locatie of een ruimere richtprijs.</p><button type="button" id="emptyReset" class="primary-small">Wis filters</button></div>
+            <div class="bottom-note">✳ Dit is een conceptdemo. Getoonde bedrijven, beoordelingen, beschikbaarheden en tarieven zijn verzonnen.</div>
+          </div>
+        </div>
+        <div id="mapPanel" class="map-panel" hidden>
+          <div class="map-banner"><div><strong>Locatieoverzicht · demo</strong><span>Een illustratieve kaart, geen echte adressen of live locaties.</span></div><button type="button" id="closeMap" aria-label="Sluit kaart">✕</button></div>
+          <div class="map-visual" aria-hidden="true"><div class="map-road road-a"></div><div class="map-road road-b"></div><div class="map-road road-c"></div><div class="map-park"></div><span class="map-town town-one">Leuven</span><span class="map-town town-two">Heverlee</span><span class="map-town town-three">Herent</span><span class="map-pin pin-a">€55</span><span class="map-pin pin-b">€42</span><span class="map-pin pin-c">€62</span><span class="map-pin pin-d">€49</span><span class="map-pin pin-e">€44</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hoe-werkt-het" class="how-section"><div class="shell">
+      <div class="how-heading"><div><p class="kicker">SIMPEL VAN START TOT KLAAR</p><h2>Jouw klus. <em>Zo gefixt.</em></h2></div><p>Geen eindeloze telefoontjes of onduidelijke offertes. Hier begint een goede samenwerking.</p></div>
+      <div class="steps">
+        <article><span class="step-number">01</span><div class="step-icon">⌕</div><h3>Vertel wat je zoekt</h3><p>Kies het type vakman en waar je hulp nodig hebt.</p></article>
+        <article><span class="step-number">02</span><div class="step-icon">☆</div><h3>Vergelijk en kies</h3><p>Ontdek vakmensen, reviews en een eerste prijsindicatie.</p></article>
+        <article><span class="step-number">03</span><div class="step-icon">↗</div><h3>Vraag een offerte</h3><p>Beschrijf je project en kom direct in contact.</p></article>
+      </div>
+    </div></section>
+
+    <section id="voor-vakmensen" class="pro-section"><div class="shell pro-banner"><div class="pro-art">⚒ <span>✳</span></div><div class="pro-copy"><p class="kicker">VOOR MENSEN DIE HET MAKEN</p><h2>Goed in je vak?<br>Laat het zien.</h2><p>Workit wil goed vakwerk zichtbaar maken. Een plek waar klanten jou vinden om wat je kan.</p></div><a href="mailto:hallo@workit.example?subject=Interesse%20in%20Workit" class="pro-cta" title="Demo-e-mailadres, niet operationeel" onclick="event.preventDefault();document.getElementById('proModal').showModal()">Ik ben vakman <span>↗</span></a></div></section>
+  </main>
+
+  <footer><div class="shell footer-inner"><a class="brand" href="#">work<span>it</span><i>.</i></a><span>Goed werk verdient een goeie match.</span><span>Conceptmockup · 2026</span></div></footer>
+
+  <dialog id="quoteModal" class="modal"><form id="quoteForm" method="dialog" class="modal-form">
+    <button type="button" class="modal-close" data-close-modal="quoteModal" aria-label="Sluiten">✕</button>
+    <div class="modal-kicker">VRAAG EEN OFFERTE</div>
+    <h2>Vertel ons over je klus.</h2>
+    <p class="modal-intro">Een vrijblijvende aanvraag voor <strong id="selectedPro">deze vakman</strong>. In deze demo wordt niets verzonden.</p>
+    <label>Wat moet er gebeuren?<textarea name="description" id="quoteDescription" required rows="4" placeholder="Bijvoorbeeld: de keukenkraan lekt en ik wil die graag laten vervangen."></textarea></label>
+    <div class="modal-two"><label>Je naam<input name="name" required placeholder="Voor- en achternaam"></label><label>Je e-mailadres<input name="email" type="email" required placeholder="naam@voorbeeld.be"></label></div>
+    <label>Waar is de klus?<input name="location" id="quoteLocation" required placeholder="Stad of postcode"></label>
+    <button class="modal-submit" type="submit">Voorbeeldaanvraag bekijken <span>↗</span></button>
+    <p class="modal-caption">Dit is uitsluitend een interactief prototype. Er worden geen gegevens opgeslagen of verzonden.</p>
+  </form></dialog>
+  <dialog id="successModal" class="modal status-modal"><div class="status-content"><button type="button" class="modal-close" data-close-modal="successModal" aria-label="Sluiten">✕</button><div class="success-mark">✓</div><h2>Zo zou je aanvraag werken.</h2><p>In een echte versie wordt je aanvraag naar de gekozen vakman gestuurd. Voor deze mockup is er niets opgeslagen of verzonden.</p><button type="button" class="modal-submit" data-close-modal="successModal">Terug naar de vakmensen</button></div></dialog>
+  <dialog id="proModal" class="modal status-modal"><div class="status-content"><button type="button" class="modal-close" data-close-modal="proModal" aria-label="Sluiten">✕</button><div class="success-mark">✳</div><h2>Binnenkort voor vakmensen.</h2><p>De registratie en zakelijke functies maken nog geen deel uit van deze conceptmockup.</p><button type="button" class="modal-submit" data-close-modal="proModal">Begrepen</button></div></dialog>
+</body>
+</html>
