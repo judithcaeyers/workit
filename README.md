@@ -28,9 +28,9 @@ Open daarna http://localhost:8000.
 
 De demo bestaat uit drie statische bestanden:
 
-- \`index.html\` — paginaopbouw en formulieren
-- \`styles.css\` — responsive styling
-- \`app.js\` — voorbeelddata en client-side interacties
+- `index.html` — paginaopbouw en formulieren
+- `styles.css` — responsive styling
+- `app.js` — voorbeelddata en client-side interacties
 
 Fonts worden geladen via Google Fonts; zonder internet valt de typografie terug op systeemfonts.
 
@@ -38,4 +38,4 @@ Fonts worden geladen via Google Fonts; zonder internet valt de typografie terug 
 
 Eerst valideren welke informatie klanten echt nodig hebben om een vakman te kiezen. Daarna kan een echte versie gekoppeld worden aan gebruikersaccounts, geverifieerde bedrijfsprofielen, postcode-/radiuszoekopdrachten, beschikbaarheden en een offerte- en berichtensysteem.
 
-**Branch:** \`feature/booking-style-marketplace\`
+**Branch:** `feature/booking-style-marketplace`
